@@ -1,3 +1,4 @@
+import 'package:doctor_system/core/theming/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -17,12 +18,8 @@ class DogLogoAndName extends StatelessWidget {
           width: 10.w,
         ),
         Text(
-          'Doctor System',
-          style: TextStyle(
-            fontSize: 20.sp,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
+          'DocDoc',
+          style: TextStyles.font24Black700Weight,
         ),
       ],
     );
