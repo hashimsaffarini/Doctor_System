@@ -1,3 +1,5 @@
+import 'package:doctor_system/core/helper/extinstions.dart';
+import 'package:doctor_system/core/routing/routes.dart';
 import 'package:doctor_system/core/theming/app_colors.dart';
 import 'package:doctor_system/core/theming/styles.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +22,9 @@ class GetStartedButton extends StatelessWidget {
           ),
         ),
       ),
-      onPressed: () {},
+      onPressed: () {
+        context.pushNamed(Routes.loginScreen);
+      },
       child: Text(
         'Get Started',
         style: TextStyles.font16WhiteSemiBold,
