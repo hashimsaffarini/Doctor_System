@@ -19,7 +19,7 @@ class DocApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.white,
-          primaryColor: ColorManger.mainBlue,
+          primaryColor: AppColors.mainBlue,
           useMaterial3: true,
         ),
         initialRoute: Routes.onBoardingScreen,
