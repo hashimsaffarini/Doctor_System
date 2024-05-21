@@ -1,11 +1,10 @@
 import 'package:doctor_system/core/helper/spacing.dart';
 import 'package:doctor_system/core/theming/styles.dart';
 import 'package:doctor_system/core/widgets/app_text_button.dart';
-import 'package:doctor_system/core/widgets/app_text_form_field.dart';
 import 'package:doctor_system/features/login/ui/widgets/already_have_account_text.dart';
+import 'package:doctor_system/features/login/ui/widgets/email_and_password.dart';
 import 'package:doctor_system/features/login/ui/widgets/terms_and_conditions_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -42,27 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 key: formKey,
                 child: Column(
                   children: [
-                    const AppTextFormField(
-                      hintText: 'Email',
-                    ),
-                    verticalSpace(18),
-                    AppTextFormField(
-                      hintText: 'Password',
-                      isObscureText: isObscureText,
-                      suffixIcon: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            isObscureText = !isObscureText;
-                          });
-                        },
-                        child: Icon(
-                          isObscureText
-                              ? Icons.visibility_off
-                              : Icons.visibility,
-                        ),
-                      ),
-                    ),
-                    verticalSpace(24),
+                    const EmailAndPassword(),
                     Align(
                       //for alignment of the text when arabic language or any other language is selected
                       alignment: AlignmentDirectional.centerEnd,
