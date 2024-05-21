@@ -1,3 +1,4 @@
+import 'package:doctor_system/core/helper/app_regex.dart';
 import 'package:doctor_system/core/helper/spacing.dart';
 import 'package:doctor_system/core/widgets/app_text_form_field.dart';
 import 'package:doctor_system/features/login/logic/cubit/login_cubit.dart';
@@ -13,17 +14,37 @@ class EmailAndPassword extends StatefulWidget {
 }
 
 class _EmailAndPasswordState extends State<EmailAndPassword> {
-  final bool hasLowerCase = false;
-  final bool hasUpperCase = false;
-  final bool hasSpecialCharacters = false;
-  final bool hasNumber = false;
-  final bool hasMinLength = false;
+  bool hasLowerCase = false;
+  bool hasUpperCase = false;
+  bool hasSpecialCharacters = false;
+  bool hasNumber = false;
+  bool hasMinLength = false;
   bool isObscureText = true;
   late TextEditingController passwordController;
   @override
   void initState() {
     super.initState();
     passwordController = context.read<LoginCubit>().passwordController;
+    setUpPasswordListener();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    passwordController.dispose();
+  }
+
+  void setUpPasswordListener() {
+    passwordController.addListener(() {
+      final password = passwordController.text;
+      setState(() {
+        hasLowerCase = AppRegex.hasLowerCase(password);
+        hasUpperCase = AppRegex.hasUpperCase(password);
+        hasSpecialCharacters = AppRegex.hasSpecialCharacter(password);
+        hasNumber = AppRegex.hasNumber(password);
+        hasMinLength = AppRegex.hasMinLength(password);
+      });
+    });
   }
 
   @override
@@ -35,7 +56,9 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
           AppTextFormField(
             hintText: 'Email',
             validator: (value) {
-              if (value == null || value.isEmpty) {
+              if (value == null ||
+                  value.isEmpty ||
+                  !AppRegex.isEmailValid(value)) {
                 return 'Please enter a valid email';
               }
             },
