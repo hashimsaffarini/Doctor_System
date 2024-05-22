@@ -1,4 +1,7 @@
+import 'package:doctor_system/core/helper/extinstions.dart';
+import 'package:doctor_system/core/routing/routes.dart';
 import 'package:doctor_system/core/theming/styles.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class AlreadyHaveAccount extends StatelessWidget {
@@ -14,8 +17,12 @@ class AlreadyHaveAccount extends StatelessWidget {
             style: TextStyles.font13DarkBlueRegular,
           ),
           TextSpan(
-            text: 'Sign Up',
+            text: 'Sign In',
             style: TextStyles.font13BlueSemiBold,
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                context.pushReplacementNamed(Routes.loginScreen);
+              },
           ),
         ],
       ),
