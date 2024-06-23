@@ -1,9 +1,9 @@
 import 'package:doctor_system/core/helper/spacing.dart';
 import 'package:doctor_system/features/home/logic/home_cubit.dart';
 import 'package:doctor_system/features/home/logic/home_state.dart';
-import 'package:doctor_system/features/home/ui/widgets/doctor_shimmer_loading.dart';
-import 'package:doctor_system/features/home/ui/widgets/doctor_speciality_list_view.dart';
-import 'package:doctor_system/features/home/ui/widgets/speciality_shimmer_loading.dart';
+import 'package:doctor_system/features/home/ui/widgets/doctors_list/doctor_shimmer_loading.dart';
+import 'package:doctor_system/features/home/ui/widgets/specializations_list/speciality_list_view.dart';
+import 'package:doctor_system/features/home/ui/widgets/specializations_list/speciality_shimmer_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -40,7 +40,7 @@ class SpecializationBlocBuilder extends StatelessWidget {
   SizedBox setuptError() => const SizedBox.shrink();
 
   Widget setuptSucess(specializationsList) {
-    return DoctorSpecialityListView(
+    return SpecialityListView(
       specializationsList: specializationsList ?? [],
     );
   }
