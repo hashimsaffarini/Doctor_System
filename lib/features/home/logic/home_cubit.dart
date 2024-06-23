@@ -18,6 +18,8 @@ class HomeCubit extends Cubit<HomeState> {
     response.when(
       success: (data) {
         specializationsList = data.specializationDataList ?? [];
+        // get the doctors list for the first specialization by default
+        getDoctorsList(specializationId: specializationsList?.first?.id);
 
         emit(HomeState.specilizationSucess(specializationsList));
       },

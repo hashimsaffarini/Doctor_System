@@ -1,14 +1,14 @@
 import 'package:doctor_system/core/helper/spacing.dart';
-import 'package:doctor_system/features/home/data/models/specilization_response_model.dart';
 import 'package:doctor_system/features/home/logic/home_cubit.dart';
 import 'package:doctor_system/features/home/logic/home_state.dart';
+import 'package:doctor_system/features/home/ui/widgets/doctor_shimmer_loading.dart';
 import 'package:doctor_system/features/home/ui/widgets/doctor_speciality_list_view.dart';
-import 'package:doctor_system/features/home/ui/widgets/doctors_list_view.dart';
+import 'package:doctor_system/features/home/ui/widgets/speciality_shimmer_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SpecializationAndDoctorBlocBuilder extends StatelessWidget {
-  const SpecializationAndDoctorBlocBuilder({
+class SpecializationBlocBuilder extends StatelessWidget {
+  const SpecializationBlocBuilder({
     super.key,
   });
 
@@ -39,27 +39,20 @@ class SpecializationAndDoctorBlocBuilder extends StatelessWidget {
 
   SizedBox setuptError() => const SizedBox.shrink();
 
-  Expanded setuptSucess(List<SpecializationsData?>? specializationsList) {
-    return Expanded(
-      child: Column(
-        children: [
-          DoctorSpecialityListView(
-            specializationsList: specializationsList ?? [],
-          ),
-          verticalSpace(8.0),
-          DoctorsListView(
-            doctorsList: specializationsList?[0]?.doctorsList ?? [],
-          ),
-        ],
-      ),
+  Widget setuptSucess(specializationsList) {
+    return DoctorSpecialityListView(
+      specializationsList: specializationsList ?? [],
     );
   }
 
-  SizedBox seupLoading() {
-    return const SizedBox(
-      height: 100,
-      child: Center(
-        child: CircularProgressIndicator.adaptive(),
+  Widget seupLoading() {
+    return Expanded(
+      child: Column(
+        children: [
+          const SpecialityShimmerLoading(),
+          verticalSpace(8.0),
+          const DoctorsShimmerLoading(),
+        ],
       ),
     );
   }
