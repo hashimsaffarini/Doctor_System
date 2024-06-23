@@ -25,7 +25,7 @@ class SpecializationAndDoctorBlocBuilder extends StatelessWidget {
               return seupLoading();
             },
             specilizationSucess: (data) {
-              var specializationsList = data.specializationDataList;
+              var specializationsList = data;
 
               return setuptSucess(specializationsList);
             },
