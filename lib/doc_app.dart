@@ -23,7 +23,7 @@ class DocApp extends StatelessWidget {
           primaryColor: AppColors.mainBlue,
           useMaterial3: true,
         ),
-        initialRoute: isLoggedInUser ? Routes.homeScreen : Routes.loginScreen,
+        initialRoute: isLoggedInUser ? Routes.homeScreen : Routes.onBoardingScreen,
         onGenerateRoute: appRouter.generateRoute,
       ),
     );

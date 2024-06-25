@@ -30,6 +30,7 @@ class SpecialityListViewItem extends StatelessWidget {
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: AppColors.darkBlue,
+                      width: 1.5.w,
                     ),
                     shape: BoxShape.circle,
                   ),
